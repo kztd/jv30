@@ -1,7 +1,56 @@
-<!DOCTYPE html>
-<html>
+<<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>JV30</title>
+<meta charset="UTF-8">
+<title>JV30</title>
+<style type="text/css" >
+/* ------------------CSS---------------------
+*/
+    kbd{
+        display: block;
+        font-size: 2.5rem;
+    }
+    .sound{
+        /*
+        */
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: brown;
+    }
+    .key{
+        /*
+        */
+        border: 4px solid black;
+        border-radius: 5px;
+        margin: 1rem;
+        font-size: 1.5rem;
+        padding:1rem .5rem;
+        transition: all .07s ease;
+        width: 100px;
+        text-align: center;
+        color: white;
+        background: rgba(0,0,0,.4);
+
+
+    }
+    .playing{
+        /*
+        */
+        transform:scale(1.1);
+        border-color: yellow;
+        box-shadow: 0 0 10px 0 yellow;
+    }
+    div.keys{
+        width: 20%;
+        float:left;
+        border: solid blue;
+    }
+
+
+
+
+</style>
 </head>
 <body>
     <div>
@@ -11,6 +60,49 @@
     </ul>
     <hr>
     </div>
+    <!--
+        1. create a line of buttons using divs
+        2. each div has a custom property data-key that will correspond to what keycode the user types
+            e.g. a = 65
+        3. load sounds for the keys to play
+        3. when the key is hit, play the sound from the beginning, making the button a little bigger
+            and to have a yellow border while playing
 
+    -->
+
+    <div class="keys">
+        <div class="key" data-key="65" ><kbd>A</kbd><span class="sound">clap</span></div>
+        <div class="key" data-key="83" ><kbd>S</kbd><span class="sound">hihat</span></div>
+    </div>
+    <img src="app1.JPG">
+
+
+    <audio data-key="65" src="sounds/cashregister.wav"></audio>
+    <audio data-key="83" src="sounds/HAMMER.WAV"></audio>
+
+
+<script>
+function removeTransition(e) {
+    console.log(e);
+    if (e.propertyName !== 'transform') return;
+    e.target.classList.remove('playing');
+}
+function playSound(e){
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const key= document.querySelector(`.key[data-key="${e.keyCode}"]`);
+    if(!audio) return;
+    key.classList.add('playing');
+    audio.currentTime = 0;
+    audio.play();
+}
+const keys = Array.from(document.querySelectorAll('.key'));
+keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+window.addEventListener('keydown', playSound);
+
+
+
+
+</script>
 </body>
 </html>
