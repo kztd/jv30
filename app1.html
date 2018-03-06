@@ -6,7 +6,15 @@
 <style type="text/css" >
 /* ------------------CSS---------------------
 */
+    html {
+        font-size: 10px;
+        background: url(http://i.imgur.com/b9r5sEL.jpg) bottom center;
+        background-size: cover;
+    }
+
     kbd{
+        /*
+        */
         display: block;
         font-size: 2.5rem;
     }
@@ -20,17 +28,20 @@
     }
     .key{
         /*
+        width: 100px;
         */
         border: 4px solid black;
         border-radius: 5px;
         margin: 1rem;
+        width: 30%;
         font-size: 1.5rem;
         padding:1rem .5rem;
         transition: all .07s ease;
-        width: 100px;
         text-align: center;
         color: white;
         background: rgba(0,0,0,.4);
+        float:left;
+
 
 
     }
@@ -42,13 +53,14 @@
         box-shadow: 0 0 10px 0 yellow;
     }
     div.keys{
+        /*
+        height: 30%;
+        */
         width: 20%;
+
         float:left;
         border: solid blue;
     }
-
-
-
 
 </style>
 </head>
@@ -71,32 +83,72 @@
     -->
 
     <div class="keys">
-        <div class="key" data-key="65" ><kbd>A</kbd><span class="sound">clap</span></div>
-        <div class="key" data-key="83" ><kbd>S</kbd><span class="sound">hihat</span></div>
+        <div class="key" data-key="65" ><kbd>A</kbd><span class="sound">cash</span></div>
+        <div class="key" data-key="83" ><kbd>S</kbd><span class="sound">hammer</span></div>
+        <div class="key" data-key="68" ><kbd>D</kbd><span class="sound">expert</span></div>
+        <div class="key" data-key="70" ><kbd>F</kbd><span class="sound">laser</span></div>
+        <div class="key" data-key="71" ><kbd>G</kbd><span class="sound">whoosh</span></div>
+        <div class="key" data-key="72" ><kbd>H</kbd><span class="sound">cork</span></div>
+        <div class="key" data-key="74" ><kbd>J</kbd><span class="sound">handbell</span></div>
+        <div class="key" data-key="75" ><kbd>K</kbd><span class="sound">suction</span></div>
     </div>
     <img src="app1.JPG">
 
 
     <audio data-key="65" src="sounds/cashregister.wav"></audio>
     <audio data-key="83" src="sounds/HAMMER.WAV"></audio>
+    <audio data-key="68" src="sounds/expert.wav"></audio>
+    <audio data-key="70" src="sounds/LASER.WAV"></audio>
+    <audio data-key="71" src="sounds/whoosh.wav"></audio>
+    <audio data-key="72" src="sounds/Corkpop.wav"></audio>
+    <audio data-key="74" src="sounds/handbell.wav"></audio>
+    <audio data-key="75" src="sounds/SUCTION.WAV"></audio>
 
 
 <script>
 function removeTransition(e) {
-    console.log(e);
     if (e.propertyName !== 'transform') return;
     e.target.classList.remove('playing');
 }
-function playSound(e){
-    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-    const key= document.querySelector(`.key[data-key="${e.keyCode}"]`);
+function playKeyCode(keyCode){
+    findIt = "[data-key='"+keyCode+"']";
+    console.log(findIt);
+    const audio = document.querySelector("audio"+findIt);
+    const key= document.querySelector(".key"+findIt);
     if(!audio) return;
     key.classList.add('playing');
     audio.currentTime = 0;
     audio.play();
 }
+function playSound(e){
+    console.log(e.keyCode);
+    playKeyCode(e.keyCode);
+}
+function mousePress(e){
+    // I don't have the key-code so I have to get it from the div
+    //  turns out 'this' is the div
+    console.log(this.getAttribute("data-key"));
+    keyCode = this.getAttribute("data-key");
+    if(!keyCode) return;
+    playKeyCode(keyCode);
+    return;
+    //keyCode = e.target.dataset['key'];  // works
+    //keyCode = e.target.dataset['key'];
+    if(!keyCode){
+        // try parent
+        console.log(e.parentElement);
+        keyCode = e.parent.dataset['key'];
+        if(keyCode) console.log('got one' + keyCode);
+    }
+    console.log(e);
+    console.log(e.target.dataset['key']);
+    keyCode = e.target.dataset['key'];
+    if(!keyCode) return;
+    playKeyCode(keyCode);
+}
 const keys = Array.from(document.querySelectorAll('.key'));
 keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+keys.forEach(key => key.addEventListener('mousedown', mousePress));
 
 window.addEventListener('keydown', playSound);
 
