@@ -1,5 +1,7 @@
-# README.md
+#Wes Bos JavaScript 30
 
-Wes Bos JavaScript 30
+30 fun warm-ups
 
-30 quick apps to hone my skills
+Just js, css & html
+
+https://courses.wesbos.com
