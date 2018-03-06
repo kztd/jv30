@@ -15,7 +15,7 @@ _italics_ and **bold** use 1 or 2 _ *'s ~~strike thru~~
 
 here is some code:
 
-    ```javascript
+    ``` 
     const inputs = document.querySelectorAll('.controls input');
     function handleUpdate() {
       const suffix = this.dataset.sizing || '';
