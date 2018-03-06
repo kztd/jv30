@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JV30</title>
+<style type="text/css" >
+/* ------------------CSS---------------------
+*/
+    html {
+        /*
+        */
+      background:#018DED url(http://unsplash.it/1500/1000?image=881&blur=50);
+      background-size:cover;
+      font-family:'helvetica neue';
+      text-align: center;
+      font-size: 10px;
+    }
+    body {
+        /*
+        */
+      margin: 0;
+      font-size: 2rem;
+      flex:1;
+      min-height: 100vh;
+      align-items: center;
+    }
+    ul{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+   .clock {
+      display:flex;
+      width: 30rem;
+      height: 30rem;
+      border:20px solid white;
+      border-radius:50%;
+      margin:50px auto;
+      position: relative;
+      padding:2rem;
+      box-shadow:
+        0 0 0 4px rgba(0,0,0,0.1),
+        inset 0 0 0 3px #EFEFEF,
+        inset 0 0 10px black,
+        0 0 10px rgba(0,0,0,0.2);
+    }
+    .clock-face {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform: translateY(-3px); /* account for the height of the clock hands */
+    }
+    .hand{
+        /*
+        transform: rotate(120deg);
+        */
+        height: 6px;
+        background: black;
+        position: absolute;
+        border: solid;
+        margin-top: 150px;
+        top=50%;
+        transform-origin: 100%;
+        transition: all 0.05s;
+        transition-timing-function: cubic-bezier(0.1 2.7 .58 1);
+
+    }
+    .second-hand{
+        color: yellow;
+        width: 50%;
+    }
+    .minute-hand{
+        color: chartreuse;
+        width: 50%;
+    }
+    .hour-hand{
+        color: orange;
+        width: 40%;
+        margin-left: 26px;
+    }
+    .header{
+        float:none;
+        border: solid;
+        margin: 0;
+        padding: 0;
+
+    }
+    div{
+        /*
+        border: solid;
+        */
+    }
+</style>
+</head>
+<body>
+    <div id="header">
+    <h1 id="time">Clock</h1>
+    <ul>
+        <li><a href="index.html">Back to Menu</a></li>
+    </ul>
+    <hr>
+    </div>
+    <!--
+        1. Write a clock program
+
+    -->
+    <div class="clock">
+        <div class="clock-face">
+            <div class="hand hour-hand"></div>
+            <div class="hand minute-hand"></div>
+            <div class="hand second-hand"></div>
+        </div>
+    </div>
+
+
+
+<script>
+    const secondHand = document.querySelector('.second-hand');
+    const minuteHand = document.querySelector('.minute-hand');
+    const hourHand = document.querySelector('.hour-hand');
+    const timeHeader = document.querySelector('#time');
+
+    function moveHand(hand, degrees){
+        degrees += 90;
+        hand.style.transform = `rotate(${degrees}deg)`;
+        //console.log('settime');
+    }
+
+    function setTime(){
+        const now = new Date();
+        const seconds = now.getSeconds();
+        const secDegrees = seconds * 6;
+        const minutes = now.getMinutes();
+        const minDegrees = minutes * 6 + seconds / 10;
+        const hours  = now.getHours();
+        const hrDegrees = hours * 30 + minutes / 2;
+        moveHand(secondHand, secDegrees);
+        moveHand(minuteHand, minDegrees);
+        moveHand(hourHand, hrDegrees);
+        //console.log(hours, minutes, seconds);
+        var h = document.getElementById('header').offsetHeight;
+        timeHeader.innerHTML = hours+":"+minutes+":"+seconds;
+        //console.log(h);
+
+    }
+
+
+
+    setInterval(setTime, 1000);     // call setTime every second
+
+</script>
+</body>
+</html>
