@@ -1,4 +1,4 @@
-README.md
+# README.md
 
 Wes Bos JavaScript 30
 

@@ -133,7 +133,7 @@
         const minutes = now.getMinutes();
         const minDegrees = minutes * 6 + seconds / 10;
         const hours  = now.getHours();
-        const hrDegrees = hours * 30 + minutes / 2;
+        const hrDegrees = hours * 30 + minutes / 2 + seconds / 120 * ;
         moveHand(secondHand, secDegrees);
         moveHand(minuteHand, minDegrees);
         moveHand(hourHand, hrDegrees);
