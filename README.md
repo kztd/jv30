@@ -1,4 +1,4 @@
-#Wes Bos JavaScript 30
+# Wes Bos JavaScript 30
 
 30 fun warm-ups - **just** js, css & html
 
