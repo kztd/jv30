@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JV30</title>
+<style type="text/css" >
+/* ------------------CSS---------------------
+*/
+    .header{
+        float:none;
+        border: solid;
+        margin: 0;
+        padding: 0;
+
+    }
+    div{
+        /*
+        border: solid;
+        */
+    }
+
+    .container{
+        /*
+        flex-wrap: wrap;
+        flex-direction: row or column;
+        justify is main axis
+        align is cross axis
+        for individual elements use align-self (stretch)
+        justify-content: flex-start;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: stretch;
+        */
+        border: 5px solid black;
+        display: flex;
+        height: 20vh;  /* 100% viewport height*/
+    }
+    .box{
+        /*
+
+        flex-grow
+        flex-shrink
+        flex grow shrink basis
+        flex 1 shorthand for setting grow and shrink to 1
+        default is zero, 1 is an equal share
+
+
+
+        flex 1 evenly distributes width when used at the
+            contained item level */
+        /*
+        width: 10vh;
+        justify-content: center;
+        width: 1%;
+        */
+        flex: 1;
+        color: white;
+        font-size: 30px;
+        text-align: center;
+        text-shadow: 4px 4px 0 rgba(0,0,0,0.1);
+        padding: 0px;
+        border-style: solid;
+
+    }
+    .box1{
+        background-color: antiquewhite;
+    }
+    .box2{
+        background-color:aqua;
+        flex: 1.5;
+    }
+    .box3{
+        background-color:chartreuse;
+        order: 2;
+    }
+    .box4{
+        background-color:coral;
+    }
+    .box5{
+        background-color:cornflowerblue;
+    }
+    .box6{
+        background-color:darkgoldenrod;
+    }
+    .box7{
+        background-color:darkolivegreen;
+    }
+    .box8{
+        background-color:darkslateblue;
+    }
+    .box9{
+        background-color:deepskyblue;
+    }
+    .box10{
+        background-color:blueviolet;
+    }
+
+</style>
+</head>
+<body>
+    <div id="header">
+    <h1 id="time">Clock</h1>
+    <ul>
+        <li><a href="index.html">Back to Menu</a></li>
+    </ul>
+    <hr>
+    </div>
+    <!--
+        1. What are flex boxes?
+
+
+    -->
+    <div class="container">
+        <div class="box box1">1 😀</div>
+        <div class="box box2">2 🤪</div>
+        <div class="box box3">3</div>
+        <div class="box box4">4</div>
+        <div class="box box5">5</div>
+        <div class="box box6">6</div>
+        <div class="box box7">7</div>
+        <div class="box box8">8</div>
+        <div class="box box9">9</div>
+        <div class="box box10">10</div>
+    </div>
+
+
+
+<script>
+
+</script>
+</body>
+</html>
