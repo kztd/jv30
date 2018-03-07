@@ -3,7 +3,7 @@
 30 fun warm-ups - **just** js, css & html
 
 
-##Markedown fun
+## Markedown fun
 
 _italics_ and **bold** use 1 or 2 _ *'s ~~strike thru~~
 
