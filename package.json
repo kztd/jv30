@@ -1,0 +1,23 @@
+{
+  "name": "jv30",
+  "version": "1.0.0",
+  "description": "30 fun warm-ups - **just** js, css & html",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kztd/jv30.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kztd/jv30/issues"
+  },
+  "homepage": "https://github.com/kztd/jv30#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0"
+  }
+}
